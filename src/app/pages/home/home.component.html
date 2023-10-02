@@ -1,0 +1,116 @@
+<button (click)="topFunction()" id="toTopBtn" class="toTopButton">
+  <img src="assets/imgs/arrow-up.svg" alt="top">
+</button>
+
+
+
+<div id="home" class="home">
+  <!-- <img class="code" src="assets/imgs/qrcode.png" alt="Qr Code"> -->
+
+  <div class="me">
+    <div>
+      <!-- <span>Hi,</span> -->
+      <h1>I am passionate about programming and I'd love to develop solutions to your problems</h1>
+      <span>Welcome to my portfolio</span>
+    </div>
+
+    <div class="social">
+      <a href="https://github.com/JordyCaro" target="_blank" rel="noreferrer">
+        <img src="assets/imgs/github.svg" alt="Github">
+      </a>
+      <a href="https://www.linkedin.com/in/jhordan-caro-b016b811a/" target="_blank" rel="noreferrer">
+        <img src="assets/imgs/linkedin.svg" alt="Linkedin">
+      </a>
+      <a href="https://wa.me/573224294287" target="_blank" rel="noreferrer">
+        <img src="assets/imgs/whatsapp.svg" alt="Whatsapp">
+      </a>
+    </div>
+  </div>
+
+  <div class="about">
+    <!-- <p>
+      I am <b>Jhordan Caro</b>, passionate about Computer Engineering and technology, <b>Front End Developer</b>
+      with <b>+4 years</b> years of experience working in different development
+      teams and contributing to different <b class="redirect" (click)="navigateTo('projects')">software</b>.
+    </p> -->
+    <div class="container console-container">
+      <div class="taskbar">
+        <span class="program-name">About Me</span>
+      </div>
+      <div class="text">
+        <p class="directory"><span class="dir">C:\user\jhordan\portfolio</span></p>
+        <p class="description">
+          $
+          <span id="tagline">
+            <span class="content" #textContent>
+              I am Jhordan Caro, a passionate developer and technology enthusiast,
+              Front End Developer with +3 years years of experience working in different
+              development teams and contributing to different software
+              I really enjoy what I do. But do you know what that means? Let me explain:
+              <br><br>
+              As a Front-End Developer, I am responsible for everything you can see on a website
+              from the design, styles, to even the animations. My primary goal is to make it
+              look good and appealing to users. Doesn't that sound great?
+              <br><br>
+              I have a deep love for technology and a continuous thirst for learning.
+              I'm always staying up-to-date with the latest web development technologies,
+              and I've had the privilege of working in various development teams and contributing to different software projects.
+              <br><br>
+              C:_
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="exp" class="experience">
+  <div class="header">
+    <p>The path ahead is just beginning, <br>and I'm always on a journey of learning and innovation...</p>
+    <div>
+      <h2>Professional</h2>
+      <h2>Experience</h2>
+    </div>
+  </div>
+
+  <div class="positions">
+    <ng-container *ngFor="let position of listPositions; let i = index">
+      <div class="positions--card" [style.background]="position.backgroundColor" [class.lower]="i % 2 === 0">
+        <h3>{{ position.name }}</h3>
+        <p [innerHTML]="position.description"></p>
+      </div>
+    </ng-container>
+  </div>
+
+</div>
+
+<div id="projects" class="projects">
+  <div class="header">
+    <div>
+      <h2>My</h2>
+      <h2>Portfolio</h2>
+    </div>
+    <p>These are some of the jobs and <br>projects I've developed</p>
+  </div>
+
+  <div class="tags">
+    <ng-container *ngFor="let tag of listTags">
+      <!-- <div class="tag" [class.active]="currentTag === tag" (click)="filterProjectByTag(tag)">
+        <span>{{ tag }}</span>
+      </div> -->
+    </ng-container>
+  </div>
+
+  <div class="list">
+    <ng-container *ngFor="let project of listProjectsAux">
+      <div class="project"
+           [class.horizontal]="project.orientation === projectOrientation.HORIZONTAL"
+           [class.vertical]="project.orientation === projectOrientation.VERTICAL"
+      >
+        <app-project-item [project]="project"></app-project-item>
+      </div>
+    </ng-container>
+  </div>
+</div>

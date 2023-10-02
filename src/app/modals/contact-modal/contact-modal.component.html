@@ -1,0 +1,33 @@
+<div class="modal-content modal-contact">
+  <img (click)="closeModal()" class="close" src="assets/imgs/close.svg" alt="Close">
+
+  <div class="contact">
+    <div class="left">
+      <img class="profile" src="assets/imgs/profile.jpg" alt="Jhordan">
+      <div class="info">
+        <span><b>Name: <br></b> Jhordan Caro</span>
+        <span><b>E-mail: <br></b> jhordan-caro@hotmail.com</span>
+        <span><b>Phone: <br></b> +573224294287</span>
+
+        <div class="social">
+          <a href="https://github.com/JordyCaro" target="_blank">
+            <img src="assets/imgs/github.svg" alt="Github">
+          </a>
+          <a href="https://www.linkedin.com/in/jhordan-caro-b016b811a/" target="_blank">
+            <img src="assets/imgs/linkedin.svg" alt="Linkedin">
+          </a>
+          <a href="https://wa.me/573224294287" target="_blank">
+            <img src="assets/imgs/whatsapp.svg" alt="Whatsapp">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <h2>Projects</h2>
+      <div class="container">
+        <div id="chart" class="graph" echarts [options]="charOption"></div>
+        <strong>{{ projectsCount }}</strong>
+      </div>
+    </div>
+  </div>
+</div>
