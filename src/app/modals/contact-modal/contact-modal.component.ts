@@ -1,5 +1,3 @@
-//#region Imports
-
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import * as echarts from 'echarts';
@@ -8,8 +6,6 @@ import { SimpleModalComponent } from 'ngx-simple-modal';
 import { listProjects, projects } from '../../data/projects';
 import { TechEnum } from '../../models/enums/tech.enum';
 
-//#endregion
-
 @Component({
   selector: 'app-contact-modal',
   templateUrl: './contact-modal.component.html',
@@ -17,17 +13,11 @@ import { TechEnum } from '../../models/enums/tech.enum';
 })
 export class ContactModalComponent extends SimpleModalComponent<void, void> implements AfterViewInit {
 
-  //#region Constructor
-
   constructor(
     private readonly router: Router,
   ) {
     super();
   }
-
-  //#endregion
-
-  //#region Public Properties
 
   public charOption: EChartsOption = {
     tooltip: {
@@ -62,9 +52,6 @@ export class ContactModalComponent extends SimpleModalComponent<void, void> impl
 
   public projectsCount: number = 0;
 
-  //#endregion
-
-  //#region Public Functions
 
   public ngAfterViewInit(): void {
     const chart = document.getElementById('chart');
@@ -82,9 +69,6 @@ export class ContactModalComponent extends SimpleModalComponent<void, void> impl
     await this.close();
   }
 
-  //#endregion
-
-  //#region Private Functions
 
   private loadGraphData(): any {
     return [
@@ -111,7 +95,5 @@ export class ContactModalComponent extends SimpleModalComponent<void, void> impl
   private countProjectsByTech(tech: TechEnum): number {
     return projects.filter(project => project.techs.includes(tech)).length;
   }
-
-  //#endregion
 
 }

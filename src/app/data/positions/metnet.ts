@@ -8,8 +8,8 @@ export const MetNet: PositionInterface = {
   isActive: true,
   name: 'Front-End Engineer at MetNet',
   description: '+2 years of experience building: \n\n' +
-    '• Web apps built with Angular (HTML5, SASS, Typescript) for a variety of businesses and government organizations.\n\n' +
-    '• Using REST APIs using Node.js, configured for seamless deployment and integration with various cloud services. Experience in using Swagger and Postman for API development and testing.',
+    '• Web apps built with Angular (HTML5, SASS, BOOTSTRAP and Typescript) for a variety of businesses and government organizations.\n\n' +
+    '• Consume REST APIs using Node.js, configured for seamless deployment and integration with various cloud services. Experience in using Swagger and Postman for API development and testing.',
   backgroundColor: 'var(--secondary-color)',
   position: 2,
 };

@@ -6,8 +6,8 @@ import { PositionInterface } from '../../models/interfaces/position.interface';
 
 export const infoJr: PositionInterface = {
   isActive: true,
-  name: 'Freelancer Junior',
-  description: 'Junior developer working as a freelancer, also in different companies and independent projects acting as a web developer..',
+  name: 'Freelancer',
+  description: 'Developer working as a freelancer, also in different companies and independent projects acting as a web developer..',
   backgroundColor: 'var(--primary-color)',
   position: 1,
 };

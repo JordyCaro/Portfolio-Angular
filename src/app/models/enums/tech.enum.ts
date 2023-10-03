@@ -1,11 +1,10 @@
 export enum TechEnum {
-  ANGULAR = 1,
-  NODE = 2,
+  ANGULAR = 4,
+  NODE = 5,
   JAVASCRIPT = 3,
-  REACT = 5,
-  HTML = 4,
-  CSS = 6,
-  // UNITY = 7,
+  REACT = 6,
+  HTML = 1,
+  CSS = 2,
 }
 
 export const formattedTechEnum: Record<TechEnum, string> = {
@@ -15,5 +14,5 @@ export const formattedTechEnum: Record<TechEnum, string> = {
   [TechEnum.REACT]: 'React',
   [TechEnum.HTML]: 'Html',
   [TechEnum.CSS]: 'CSS',
-  // [TechEnum.UNITY]: 'Unity',
+
 }
