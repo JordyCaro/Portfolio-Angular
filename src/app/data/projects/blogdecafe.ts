@@ -30,7 +30,7 @@ export const blogdecafe: ProjectInterface = {
 
   ],
   links: [
-    { title: 'Site', link: '' },
+    { title: 'Site', link: 'https://blogdecafe-jc.netlify.app/' },
     // { title: '', link: '' },
   ],
   tags: [ProjectTagsEnum.WEB, ],

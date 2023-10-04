@@ -33,7 +33,7 @@ export const frontendstore: ProjectInterface = {
 
   ],
   links: [
-    { title: 'Site', link: 'https://lamejornochedetuvida.com/#/inicio' },
+    { title: 'Site', link: 'https://frontend-store-jc.netlify.app/' },
     // { title: '', link: '' },
   ],
   tags: [ProjectTagsEnum.WEB, ],
