@@ -10,8 +10,9 @@ export const filmpedia: ProjectInterface = {
   coverImage: 'assets/imgs/projects/filmpedia/FilmPedia1.png',
   developmentDate: '12/03/2023 ~ 17/06/2023',
   description: 'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b> and accessing <b>azure</b>.\n\n' +
-    'Private software in which drivers and their vehicles can <b>upload their documents</b> to connect and get loads, other drivers or jobs.\n\n',
-    outcome: 'Fixed some forms to send and receive documents correctly.',
+    '<b>Movie page</b> which through an <b>API</b> brings a catalog of movies with all their information.\n\n'+
+    'You can see basic information about their production and a synopsis, in addition to their cast.\n',
+    outcome: 'Interesting design and functionality.',
   imageUrls: [
     'assets/imgs/projects/filmpedia/FilmPedia1.png',
     'assets/imgs/projects/filmpedia/FilmPedia2.png',
@@ -22,7 +23,7 @@ export const filmpedia: ProjectInterface = {
 
   ],
   links: [
-    { title: 'Site', link: 'https://portafolio-jhordan-caro.netlify.app/#sobre-mi' },
+    { title: 'Site', link: 'https://filmpedia.netlify.app/home' },
     // { title: '', link: '' },
   ],
   tags: [ProjectTagsEnum.WEB, ],

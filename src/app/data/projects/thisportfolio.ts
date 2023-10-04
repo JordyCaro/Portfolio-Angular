@@ -9,9 +9,9 @@ export const thisportfolio: ProjectInterface = {
   name: 'This Portfolio',
   coverImage: 'assets/imgs/projects/thisportfolio/Portfolio-Jordy1.png',
   developmentDate: '12/03/2023 ~ 17/06/2023',
-  description: 'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b> and accessing <b>azure</b>.\n\n' +
-    'Private software in which drivers and their vehicles can <b>upload their documents</b> to connect and get loads, other drivers or jobs.\n\n',
-    outcome: 'Fixed some forms to send and receive documents correctly.',
+  description: "<b>If it's not a dejavu it's a loop...</b>\n\n" +
+  'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b> and accessing <b>azure</b>.\n\n',
+    outcome: 'Everything you can see.',
   imageUrls: [
     'assets/imgs/projects/thisportfolio/Portfolio-Jordy1.png',
     'assets/imgs/projects/thisportfolio/Portfolio-Jordy2.png',
@@ -22,7 +22,7 @@ export const thisportfolio: ProjectInterface = {
 
   ],
   links: [
-    { title: 'Site', link: 'https://portafolio-jhordan-caro.netlify.app/#sobre-mi' },
+    { title: 'Site', link: '/home' },
     // { title: '', link: '' },
   ],
   tags: [ProjectTagsEnum.WEB, ],

@@ -13,10 +13,9 @@ export const blogdecafe: ProjectInterface = {
   name: 'BlogDeCafe',
   coverImage: 'assets/imgs/projects/blogdecafe/BlogDeCafe1.png',
   developmentDate: '12/09/2021 ~ 17/05/2022',
-  description: 'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b> and accessing <b>azure</b>.\n\n' +
-    ' Site to buy tickets with which to participate in <b>raffles and win tickets</b> to different events or specific places.\n\n' +
-    'It is possible to purchase multiple tickets safely and view previous draws and previous winners..\n',
-    outcome: 'It was created from scratch until it was brought to production, meeting all the client requirements.',
+  description: 'Developed in <b>Angular (HTML, CSS, javascript)</b>.\n\n' +
+  'Blog type page in which you can find different articles and have access to some courses, its main theme is coffee.\n\n',
+   outcome: 'A sample of my first steps as a frontend developer.',
   imageUrls: [
     'assets/imgs/projects/blogdecafe/BlogDeCafe5.jpg',
     'assets/imgs/projects/blogdecafe/BlogDeCafe1.png',

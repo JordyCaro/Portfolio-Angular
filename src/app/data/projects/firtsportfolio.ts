@@ -9,9 +9,9 @@ export const firtsportfolio: ProjectInterface = {
   name: 'Firts Portfolio',
   coverImage: 'assets/imgs/projects/firtsportfolio/firtsportfolio1.png',
   developmentDate: '12/03/2023 ~ 17/06/2023',
-  description: 'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b> and accessing <b>azure</b>.\n\n' +
-    'Private software in which drivers and their vehicles can <b>upload their documents</b> to connect and get loads, other drivers or jobs.\n\n',
-    outcome: 'Fixed some forms to send and receive documents correctly.',
+  description: 'Developed in <b>Angular (HTML, CSS, javascript)</b>.\n\n' +
+    "It's just my first portfolio, what are you waiting for to go see it....\n\n",
+    outcome: 'A sample of my first steps as a frontend developer.',
   imageUrls: [
     'assets/imgs/projects/firtsportfolio/firtsportfolio1.png',
     'assets/imgs/projects/firtsportfolio/firtsportfolio2.png',

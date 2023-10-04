@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import { listPositions } from '../../data/positions';
 import { listProjects } from '../../data/projects';
 import { OrientationEnum } from '../../models/enums/orientation.enum';
@@ -20,7 +21,8 @@ export class HomeComponent {
   constructor(
     @Inject(DOCUMENT)
     private readonly doc: Document,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   public listPositions: PositionInterface[] = listPositions;
@@ -76,8 +78,10 @@ export class HomeComponent {
 
   ngAfterViewInit(): void {
     this.animateText();
-    this.scrollToBottom();
+    this.scrollTextToBottom();
+
   }
+
 
 
   async sleep(ms: number): Promise<void> {
@@ -104,15 +108,12 @@ export class HomeComponent {
     textElement.innerHTML += '<br><br>';
 
     await this.typeWriter(textElement, originalText);
-  }
 
-    scrollTextToBottom(): void {
+    this.scrollTextToBottom(); // Llama a la función para que el contenido se muestre en la parte inferior
+    this.cdRef.detectChanges();
+  }
+  scrollTextToBottom(): void {
     const textElement = this.textContent.nativeElement;
     textElement.scrollTop = textElement.scrollHeight;
-  }
-
-  scrollToBottom(): void {
-    const textContentElement = this.textContent.nativeElement;
-    textContentElement.scrollTop = textContentElement.scrollHeight;
   }
 }

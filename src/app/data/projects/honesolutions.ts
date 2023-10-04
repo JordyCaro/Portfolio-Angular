@@ -16,7 +16,7 @@ export const honesolutions: ProjectInterface = {
   description: 'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b> and accessing <b>azure</b>.\n\n' +
     'Private software in which different health providers have control over their specialists and their users\n\n' +
     'There are forms to create, edit, delete different content from various databases so that administrators can have more control\n',
-    outcome: 'It was created from scratch until it was brought to production, meeting all the client requirements.',
+    outcome: 'Creation of new components and forms to have control over the creation and editing of your databases.',
   imageUrls: [
     'assets/imgs/projects/honesolutions/Hone-Solutions1.png',
     'assets/imgs/projects/honesolutions/Hone-Solutions2.jpg',
