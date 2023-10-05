@@ -195,13 +195,15 @@
       font-size: 3rem;
       font-weight: 900;
       line-height: 1.1;
+      color: white;
+      
 
       @media screen and (max-width: 768px) {
         text-align: center;
       }
 
       &:last-child {
-        color: black;
+        color: skyblue;
       }
     }
   }
@@ -320,13 +322,14 @@
       font-size: 3rem;
       font-weight: 900;
       line-height: 1.1;
+      color: white;
 
       @media screen and (max-width: 768px) {
         text-align: center;
       }
 
       &:first-child {
-        color: black;
+        color: skyblue;
       }
     }
 
@@ -335,6 +338,8 @@
       margin: auto 6rem 0;
       font-weight: bold;
       font-size: 1.4rem;
+      color: white;
+      text-align: center;
 
       @media screen and (max-width: 768px) {
         text-align: center;

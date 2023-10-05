@@ -7,7 +7,9 @@ import { PositionInterface } from '../../models/interfaces/position.interface';
 export const infoJr: PositionInterface = {
   isActive: true,
   name: 'Freelancer',
-  description: 'Developer working as a freelancer, also in different companies and independent projects acting as a web developer..',
-  backgroundColor: 'var(--primary-color)',
+  description: 'Freelance developer, collaborating with various companies and participating in independent projects, where my role mainly revolves around web development. \n\n'+
+  'In addition to my freelance work, I also contribute to different organizations and contribute to a wide range of web-based initiatives. \n\n'+
+  "My experience as a web developer spans multiple domains, allowing me to adapt to diverse project requirements and deliver exceptional results. Whether it's creating beautiful websites, optimizing user experiences or implementing innovative web solutions.",
+  backgroundColor: 'var(--secondary-color)',
   position: 1,
 };
