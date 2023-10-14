@@ -10,7 +10,7 @@ export const thisportfolio: ProjectInterface = {
   coverImage: 'assets/imgs/projects/thisportfolio/Portfolio-Jordy1.png',
   developmentDate: '12/03/2023 ~ 17/06/2023',
   description: "<b>If it's not a dejavu it's a loop...</b>\n\n" +
-  'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b> and accessing <b>azure</b>.\n\n',
+  'Developed in <b>Angular (HTML, BOOTSTRAP, Typescript)</b></b>.\n\n',
     outcome: 'Everything you can see.',
   imageUrls: [
     'assets/imgs/projects/thisportfolio/Portfolio-Jordy1.png',

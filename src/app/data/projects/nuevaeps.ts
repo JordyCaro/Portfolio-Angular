@@ -27,7 +27,7 @@ export const nuevaeps: ProjectInterface = {
   ],
   links: [
     // { title: 'Site', link: '' },
-    // { title: '', link: '' },
+    { title: '', link: 'https://directoriopac.nuevaeps.com.co/' },
   ],
   tags: [ProjectTagsEnum.WEB, ],
   techs: [TechEnum.ANGULAR,TechEnum.NODE, TechEnum.HTML, TechEnum.CSS,],
