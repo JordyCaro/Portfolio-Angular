@@ -1,7 +1,6 @@
-<button (click)="topFunction()" id="toTopBtn" class="toTopButton">
-  <img src="assets/imgs/arrow-up.svg" alt="top">
+<button (click)="topFunction()" id="toTopBtn" class="toTopButton" aria-label="Scroll to top">
+  <img src="assets/imgs/arrow-up.svg" alt="Scroll to top">
 </button>
-
 
 
 <div id="home" class="home">
@@ -28,11 +27,6 @@
   </div>
 
   <div class="about">
-    <!-- <p>
-      I am <b>Jhordan Caro</b>, passionate about Computer Engineering and technology, <b>Front End Developer</b>
-      with <b>+4 years</b> years of experience working in different development
-      teams and contributing to different <b class="redirect" (click)="navigateTo('projects')">software</b>.
-    </p> -->
     <div class="container console-container">
       <div class="taskbar">
         <span class="program-name">About Me</span>
@@ -44,8 +38,8 @@
           <span id="tagline">
             <span class="content" #textContent>
               I am Jhordan Caro, a passionate developer and technology enthusiast,
-              Front End Developer with +3 years years of experience working in different
-              development teams and contributing to different software
+              Front End Developer with +6 years of experience working in different
+              development teams and contributing to different software.
               I really enjoy what I do. But do you know what that means? Let me explain:
               <br><br>
               As a Front-End Developer, I am responsible for everything you can see on a website
@@ -79,6 +73,7 @@
     <ng-container *ngFor="let position of listPositions; let i = index">
       <div class="positions--card" [style.background]="position.backgroundColor" [class.lower]="i % 2 === 0">
         <h3>{{ position.name }}</h3>
+        <h4>{{ position.year }}</h4>
         <p [innerHTML]="position.description"></p>
       </div>
     </ng-container>

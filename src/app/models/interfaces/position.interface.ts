@@ -4,4 +4,5 @@ export interface PositionInterface {
   description: string;
   backgroundColor: string;
   position: number;
+  year: string;
 }

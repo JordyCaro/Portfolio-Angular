@@ -240,6 +240,14 @@
         color: white;
       }
 
+      h4 {
+        font-weight: 700;
+        font-size: 1.4rem;
+        text-align: center;
+        margin: 0;
+        color: white;
+      }
+
       p {
         color: white;
         text-align: center;
@@ -442,4 +450,17 @@
   line-height: 1.5;
 }
 
+.toTopButton {
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.toTopButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.toTopButton:focus {
+  outline: none; 
+  box-shadow: 0 0 0 4px rgba(0, 128, 255, 0.5); 
+}
 
