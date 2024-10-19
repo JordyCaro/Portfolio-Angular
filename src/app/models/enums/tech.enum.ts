@@ -5,6 +5,7 @@ export enum TechEnum {
   REACT = 6,
   HTML = 1,
   CSS = 2,
+  Astro = 7,
 }
 
 export const formattedTechEnum: Record<TechEnum, string> = {
@@ -14,5 +15,6 @@ export const formattedTechEnum: Record<TechEnum, string> = {
   [TechEnum.REACT]: 'React',
   [TechEnum.HTML]: 'Html',
   [TechEnum.CSS]: 'CSS',
+  [TechEnum.Astro]: 'Astro',
 
 }

@@ -9,8 +9,11 @@ import { frontendstore } from './projects/frontendstore';
 import { compracursos } from './projects/compracursos';
 import { filmpedia } from './projects/filmpedia';
 import { thisportfolio } from './projects/thisportfolio';
+import { nemogallery } from './projects/nemogallery';
+
 
 export const projects: ProjectInterface[] = [
+  nemogallery,
   thisportfolio,
   lmndtv,
   cargamasiva,
