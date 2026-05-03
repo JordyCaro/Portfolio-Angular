@@ -18,12 +18,37 @@ export class HomeComponent {
   @ViewChild('textContent')
   textContent!: ElementRef;
 
+  @ViewChild('positionsSlider')
+  positionsSlider!: ElementRef;
+
   constructor(
     @Inject(DOCUMENT)
     private readonly doc: Document,
     private renderer: Renderer2,
     private cdRef: ChangeDetectorRef
   ) {}
+
+  public scrollLeft(): void {
+    if (this.positionsSlider) {
+      const container = this.positionsSlider.nativeElement;
+      const card = container.querySelector('.positions--card');
+      if (card) {
+        const scrollAmount = card.offsetWidth + 32;
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
+  }
+
+  public scrollRight(): void {
+    if (this.positionsSlider) {
+      const container = this.positionsSlider.nativeElement;
+      const card = container.querySelector('.positions--card');
+      if (card) {
+        const scrollAmount = card.offsetWidth + 32;
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  }
 
   public listPositions: PositionInterface[] = listPositions;
 
@@ -95,6 +120,7 @@ export class HomeComponent {
       } else {
         textElement.innerHTML += text.charAt(i);
       }
+      this.scrollTextToBottom();
       await this.sleep(30);
     }
   }
@@ -109,11 +135,16 @@ export class HomeComponent {
 
     await this.typeWriter(textElement, originalText);
 
-    this.scrollTextToBottom(); // Llama a la función para que el contenido se muestre en la parte inferior
+    this.scrollTextToBottom();
     this.cdRef.detectChanges();
   }
+  
   scrollTextToBottom(): void {
     const textElement = this.textContent.nativeElement;
-    textElement.scrollTop = textElement.scrollHeight;
+    // La consola tiene overflow y height fijos en la clase .text
+    const container = textElement.closest('.text');
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
   }
 }

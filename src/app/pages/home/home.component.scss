@@ -208,28 +208,90 @@
     }
   }
 
-  .positions {
+  .slider-wrapper {
+    position: relative;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
     margin: 4rem 0;
 
     @media screen and (max-width: 768px) {
-      margin: 0;
-      flex-direction: column;
-      flex-wrap: unset;
+      margin: 2rem 0;
+    }
+  }
+
+  .slider-arrow {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    }
+
+    &.left {
+      left: -20px;
+    }
+
+    &.right {
+      right: -20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .positions {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding: 2rem 1rem 5rem 1rem;
+    margin: 0;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    width: 100%;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding-bottom: 2rem;
     }
 
     &--card {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
       border-radius: 20px;
       padding: 2rem 1.5rem;
-      margin: 2rem;
-      width: 25%;
+      margin: 0;
+      width: calc((100% - 4rem) / 3);
+      box-sizing: border-box;
       box-shadow: 0 4px 9px #445964;
+      height: fit-content;
 
       @media screen and (max-width: 768px) {
-        width: unset;
-        margin: 1rem;
+        width: 90%;
+        scroll-snap-align: center;
       }
 
       h3 {

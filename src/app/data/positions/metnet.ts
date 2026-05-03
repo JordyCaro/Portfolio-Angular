@@ -2,11 +2,11 @@ import { PositionInterface } from '../../models/interfaces/position.interface';
 
 export const MetNet: PositionInterface = {
   isActive: true,
-  name: 'Front-End Engineer at MetNet',
-  description: '+2 years of experience building: \n\n' +
-  '• Web apps built with Angular (HTML5, SASS, BOOTSTRAP and Typescript) for a variety of businesses and government organizations.\n\n' +
-  '• Consume REST APIs using Node.js, configured for seamless deployment and integration with various cloud services. Experience in using Swagger and Postman for API development and testing.',
+  name: 'Frontend Developer at MetNet',
+  description: '• Development of web applications using Angular, ensuring high performance and responsive design.\n\n' +
+  '• Creation and integration of RESTful APIs, connecting front-end applications with back-end services.\n\n' +
+  '• Implementation of unit and integration testing using frameworks like Jasmine and Karma to ensure code quality and reliability.',
   year: '2022 - 2023',
   backgroundColor: 'var(--secondary-color)',
-  position: 3,
+  position: 6,
 };
