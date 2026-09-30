@@ -5,4 +5,5 @@ export interface PositionInterface {
   backgroundColor: string;
   position: number;
   year: string;
+  current?: boolean;
 }

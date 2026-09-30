@@ -1,4 +1,4 @@
-<button (click)="topFunction()" id="toTopBtn" class="toTopButton" aria-label="Scroll to top">
+<button (click)="topFunction()" id="toTopBtn" class="toTopButton" [attr.aria-label]="'common.toTop' | t">
   <img src="assets/imgs/arrow-up.svg" alt="Scroll to top">
 </button>
 
@@ -9,52 +9,55 @@
   <div class="me">
     <div>
       <!-- <span>Hi,</span> -->
-      <h1>I am passionate about programming and I'd love to develop solutions to your problems</h1>
-      <span>Welcome to my portfolio</span>
+      <span class="role-badge">{{ 'hero.badge' | t }}</span>
+      <h1>{{ 'hero.title' | t }}</h1>
+      <span>{{ 'hero.subtitle' | t }}</span>
     </div>
 
-    <div class="social">
-      <a href="https://github.com/JordyCaro" target="_blank" rel="noreferrer">
-        <img src="assets/imgs/github.svg" alt="Github">
-      </a>
-      <a href="https://www.linkedin.com/in/jhordan-caro-b016b811a/" target="_blank" rel="noreferrer">
-        <img src="assets/imgs/linkedin.svg" alt="Linkedin">
-      </a>
-      <a href="https://wa.me/573224294287" target="_blank" rel="noreferrer">
-        <img src="assets/imgs/whatsapp.svg" alt="Whatsapp">
-      </a>
-    </div>
   </div>
 
   <div class="about">
     <div class="container console-container">
       <div class="taskbar">
-        <span class="program-name">About Me</span>
+        <span class="traffic-lights" aria-hidden="true">
+          <span class="light light--close"></span>
+          <span class="light light--minimize"></span>
+          <span class="light light--zoom"></span>
+        </span>
+        <span class="program-name">
+          <img src="assets/imgs/code-icon.svg" alt="">
+          {{ 'terminal.title' | t }}
+        </span>
       </div>
       <div class="text">
-        <p class="directory"><span class="dir">C:\user\jhordan\portfolio</span></p>
+        <p class="directory">
+          <span class="prompt-user">jhordan&#64;portfolio</span>
+          <span class="dir">~/portfolio</span>
+          <span class="branch">git:(main)</span>
+        </p>
         <p class="description">
-          $
+          <span class="prompt-symbol">❯</span>
           <span id="tagline">
-            <span class="content" #textContent>
-              I am Jhordan Caro, a passionate developer and technology enthusiast,
-              Front End Developer with +6 years of experience working in different
-              development teams and contributing to different software.
-              I really enjoy what I do. But do you know what that means? Let me explain:
-              <br><br>
-              As a Front-End Developer, I am responsible for everything you can see on a website
-              from the design, styles, to even the animations. My primary goal is to make it
-              look good and appealing to users. Doesn't that sound great?
-              <br><br>
-              I have a deep love for technology and a continuous thirst for learning.
-              I'm always staying up-to-date with the latest web development technologies,
-              and I've had the privilege of working in various development teams and contributing to different software projects.
-              <br><br>
-              C:<span class="blinking-underscore">_</span>
-            </span>
+            <span class="content" #textContent></span>
           </span>
         </p>
       </div>
+    </div>
+
+    <div class="contact-cards">
+      <a class="contact-card" *ngFor="let item of contactItems; let i = index"
+         [href]="item.href"
+         [attr.target]="item.external ? '_blank' : null"
+         [attr.rel]="item.external ? 'noreferrer' : null"
+         [style.--i]="i"
+         (mousemove)="onCardMove($event)">
+        <span class="contact-card__icon" [style.--icon]="'url(' + item.icon + ')'"></span>
+        <span class="contact-card__text">
+          <span class="contact-card__label">{{ item.label | t }}</span>
+          <span class="contact-card__value">{{ item.value }}</span>
+        </span>
+        <svg class="contact-card__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </a>
     </div>
   </div>
 </div>
@@ -62,46 +65,155 @@
 
 <div id="exp" class="experience">
   <div class="header">
-    <p>The path ahead is just beginning, <br>and I'm always on a journey of learning and innovation.</p>
+    <p [innerHTML]="'exp.intro' | t"></p>
     <div>
-      <h2>Professional</h2>
-      <h2>Experience</h2>
+      <h2>{{ 'exp.title1' | t }}</h2>
+      <h2>{{ 'exp.title2' | t }}</h2>
     </div>
   </div>
 
-  <div class="slider-wrapper">
-    <button class="slider-arrow left" (click)="scrollLeft()" aria-label="Scroll left">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-    </button>
-    
-    <div class="positions" #positionsSlider>
-      <ng-container *ngFor="let position of listPositions; let i = index">
-        <div class="positions--card" [style.background]="position.backgroundColor" [class.lower]="i % 2 === 0">
-          <h3>{{ position.name }}</h3>
-          <h4>{{ position.year }}</h4>
-          <p [innerHTML]="position.description"></p>
+  <div class="wheel-wrapper">
+    <div class="wheel"
+         #wheel
+         tabindex="0"
+         role="listbox"
+         [attr.aria-label]="'exp.aria' | t"
+         [style.--ch]="activeHeight + 'px'"
+         (keydown)="onWheelKey($event)"
+         (touchstart)="onTouchStart($event)"
+         (touchend)="onTouchEnd($event)">
+      <article class="wheel__item"
+               *ngFor="let position of listPositions; let i = index; trackBy: trackByIndex"
+               role="option"
+               [attr.aria-selected]="activePosition === i"
+               [class.is-active]="activePosition === i"
+               [class.is-far]="abs(i - activePosition) > 3"
+               [style.--o]="i - activePosition"
+               [style.--a]="abs(i - activePosition)"
+               [style.--s]="sign(i - activePosition)"
+               [style.--card-bg]="position.backgroundColor"
+               [style.z-index]="100 - abs(i - activePosition)"
+               (click)="setActivePosition(i)"
+               (mousemove)="onCardMove($event)">
+        <header class="wheel__header">
+          <span class="wheel__index">{{ (i + 1).toString().padStart(2, '0') }}</span>
+
+          <span class="wheel__title">
+            <span class="wheel__role">{{ splitRole(position.name).role }}</span>
+            <span class="wheel__company" *ngIf="splitRole(position.name).company">
+              {{ splitRole(position.name).company }}
+            </span>
+          </span>
+
+          <span class="wheel__meta">
+            <span class="wheel__now" *ngIf="position.current">{{ 'exp.now' | t }}</span>
+            <span class="wheel__year">{{ position.year }}</span>
+          </span>
+        </header>
+
+        <ul class="wheel__list" *ngIf="activePosition === i">
+          <li *ngFor="let line of bullets(position.description)">{{ line }}</li>
+        </ul>
+      </article>
+    </div>
+
+    <nav class="wheel-nav" [attr.aria-label]="'exp.nav' | t">
+      <button class="wheel-nav__arrow" type="button" [attr.aria-label]="'exp.prev' | t"
+              [disabled]="activePosition === 0" (click)="setActivePosition(activePosition - 1)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      </button>
+
+      <div class="wheel-nav__dots">
+        <button type="button"
+                *ngFor="let position of listPositions; let i = index; trackBy: trackByIndex"
+                class="wheel-nav__dot"
+                [class.is-active]="activePosition === i"
+                [attr.aria-label]="splitRole(position.name).role"
+                (click)="setActivePosition(i)">
+          <span class="wheel-nav__label">{{ shortYear(position.year) }}</span>
+        </button>
+      </div>
+
+      <button class="wheel-nav__arrow" type="button" [attr.aria-label]="'exp.next' | t"
+              [disabled]="activePosition === listPositions.length - 1" (click)="setActivePosition(activePosition + 1)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+
+      <span class="wheel-nav__counter">
+        {{ (activePosition + 1).toString().padStart(2, '0') }} / {{ listPositions.length.toString().padStart(2, '0') }}
+      </span>
+    </nav>
+  </div>
+
+  <p class="wheel-hint">{{ 'exp.hint' | t }}</p>
+
+</div>
+
+<div id="skills" class="skills">
+  <div class="header">
+    <div>
+      <h2>{{ 'skills.title1' | t }}</h2>
+      <h2>{{ 'skills.title2' | t }}</h2>
+    </div>
+    <p [innerHTML]="'skills.intro' | t"></p>
+  </div>
+
+  <div class="skills__grid">
+    <div class="skills__group reveal" *ngFor="let group of skillGroups; let g = index" [style.--reveal-delay]="(g * 100) + 'ms'">
+      <h3>{{ skillGroupTitle(group.title) }}</h3>
+
+      <div class="skill" *ngFor="let skill of group.skills; let s = index" [style.--level]="skill.level" [style.--delay]="(s * 120) + 'ms'">
+        <div class="skill__info">
+          <span class="skill__name">{{ skill.name }}</span>
+          <span class="skill__value">{{ skill.level }}%</span>
         </div>
-      </ng-container>
+        <div class="skill__bar">
+          <div class="skill__fill">
+            <span class="skill__tip"></span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <button class="slider-arrow right" (click)="scrollRight()" aria-label="Scroll right">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
+<div id="education" class="education">
+  <div class="header">
+    <p [innerHTML]="'edu.intro' | t"></p>
+    <div>
+      <h2>{{ 'edu.title1' | t }}</h2>
+      <h2>{{ 'edu.title2' | t }}</h2>
+    </div>
   </div>
 
+  <div class="education__grid">
+    <div class="education__column">
+      <h3>{{ 'edu.academic' | t }}</h3>
+      <div class="education__card reveal" *ngFor="let item of education">
+        <span class="education__year">{{ item.year }}</span>
+        <h4>{{ item.title }}</h4>
+        <p>{{ item.institution }}</p>
+      </div>
+    </div>
+
+    <div class="education__column">
+      <h3>{{ 'edu.certifications' | t }}</h3>
+      <div class="education__card reveal" *ngFor="let item of certifications">
+        <span class="education__year">{{ item.year }}</span>
+        <h4>{{ item.title }}</h4>
+        <p>{{ item.institution }}</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="projects" class="projects">
   <div class="header">
     <div>
-      <h2>My</h2>
-      <h2>Portfolio</h2>
+      <h2>{{ 'projects.title1' | t }}</h2>
+      <h2>{{ 'projects.title2' | t }}</h2>
     </div>
-    <p>These are some of the jobs and <br>projects I've developed</p>
+    <p [innerHTML]="'projects.intro' | t"></p>
   </div>
 
   <div class="tags">
@@ -113,12 +225,14 @@
   </div>
 
   <div class="list">
-    <ng-container *ngFor="let project of listProjectsAux">
-      <div class="project"
+    <ng-container *ngFor="let project of listProjectsAux; let i = index">
+      <div class="project reveal"
            [class.horizontal]="project.orientation === projectOrientation.HORIZONTAL"
            [class.vertical]="project.orientation === projectOrientation.VERTICAL"
+           [style.--card-bg]="i % 2 === 0 ? 'var(--secondary-color)' : 'var(--tertiary-color)'"
+           [style.--reveal-delay]="((i % 3) * 90) + 'ms'"
       >
-        <app-project-item [project]="project"></app-project-item>
+        <app-project-item [project]="project" [index]="i"></app-project-item>
       </div>
     </ng-container>
   </div>

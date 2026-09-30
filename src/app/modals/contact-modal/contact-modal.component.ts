@@ -2,22 +2,22 @@ import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts';
-import { SimpleModalComponent } from 'ngx-simple-modal';
 import { listProjects, projects } from '../../data/projects';
+import { LanguageService } from '../../i18n/language.service';
 import { TechEnum } from '../../models/enums/tech.enum';
 
 @Component({
+  standalone: false,
   selector: 'app-contact-modal',
   templateUrl: './contact-modal.component.html',
   styleUrls: ['./contact-modal.component.scss'],
 })
-export class ContactModalComponent extends SimpleModalComponent<void, void> implements AfterViewInit {
+export class ContactModalComponent implements AfterViewInit {
 
   constructor(
     private readonly router: Router,
-  ) {
-    super();
-  }
+    private readonly language: LanguageService,
+  ) {}
 
   public charOption: EChartsOption = {
     tooltip: {
@@ -25,7 +25,7 @@ export class ContactModalComponent extends SimpleModalComponent<void, void> impl
     },
     series: [
       {
-        name: 'Projects',
+        name: this.language.t('contact.projects'),
         type: 'pie',
         radius: ['40%', '70%'],
         avoidLabelOverlap: false,
@@ -64,9 +64,8 @@ export class ContactModalComponent extends SimpleModalComponent<void, void> impl
     this.loadCounterAnimation();
   }
 
-  public async closeModal(): Promise<void> {
-    await this.router.navigate([], { queryParams: {} });
-    await this.close();
+  public closeModal(): void {
+    void this.router.navigate([], { queryParams: {} });
   }
 
 
@@ -85,8 +84,10 @@ export class ContactModalComponent extends SimpleModalComponent<void, void> impl
     const totalProjects: number = listProjects.length;
 
     const counter = setInterval(() => {
-      if (this.projectsCount === totalProjects)
+      if (this.projectsCount >= totalProjects) {
         clearInterval(counter);
+        return;
+      }
 
       this.projectsCount++;
     }, 70);

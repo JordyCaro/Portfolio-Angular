@@ -2,4 +2,51 @@
   <app-navbar></app-navbar>
 
   <router-outlet></router-outlet>
+
+  <footer class="footer">
+    <div class="footer__glow"></div>
+
+    <div class="footer__top">
+      <div class="footer__brand">
+        <h2><img src="assets/imgs/code-icon.svg" alt="Code"> Jhordan Caro</h2>
+        <p>{{ 'hero.title' | t }}</p>
+        <a class="footer__cv" [href]="'footer.cvFile' | t" download>{{ 'footer.cv' | t }}</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>{{ 'footer.navigation' | t }}</h3>
+        <a href="/home">{{ 'nav.home' | t }}</a>
+        <a href="/home#exp">{{ 'nav.experience' | t }}</a>
+        <a href="/home#skills">{{ 'nav.skills' | t }}</a>
+        <a href="/home#education">{{ 'nav.education' | t }}</a>
+        <a href="/home#projects">{{ 'nav.projects' | t }}</a>
+        <a (click)="openContact()">{{ 'nav.contact' | t }}</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>{{ 'footer.contact' | t }}</h3>
+        <a href="mailto:jhordancaroh@gmail.com">jhordancaroh&#64;gmail.com</a>
+        <a href="https://wa.me/573224294287" target="_blank" rel="noreferrer">+57 322 429 4287</a>
+        <div class="footer__social">
+          <a href="https://github.com/JordyCaro" target="_blank" rel="noreferrer" aria-label="Github">
+            <img src="assets/imgs/github.svg" alt="Github">
+          </a>
+          <a href="https://www.linkedin.com/in/jhordan-caro-b016b811a/" target="_blank" rel="noreferrer" aria-label="Linkedin">
+            <img src="assets/imgs/linkedin.svg" alt="Linkedin">
+          </a>
+          <a href="https://wa.me/573224294287" target="_blank" rel="noreferrer" aria-label="Whatsapp">
+            <img src="assets/imgs/whatsapp.svg" alt="Whatsapp">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; {{ year }} Jhordan Caro</span>
+      <span class="footer__prompt">C:\user\jhordan\portfolio<span class="blink">_</span></span>
+    </div>
+  </footer>
+
+  <app-contact-modal *ngIf="contactOpen"></app-contact-modal>
+  <app-image-zoom-modal *ngIf="imageSrc" [src]="imageSrc"></app-image-zoom-modal>
 </div>

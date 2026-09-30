@@ -8,7 +8,7 @@ export const CreativeInnovation: PositionInterface = {
   '• Creation and maintenance of RESTful APIs using PHP, NestJS, Java and Spring Boot to enable seamless integration between front-end and back-end services.\n\n' +
   '• Development and experimentation with AI-powered assistants and automation agents for tasks such as customer support, lead generation, and content generation.\n\n' +
   '• Implementation of Python scripts for AI-related tasks, data processing, and integration with external APIs and services.',
-  year: '2024 - 2025',
+  year: 'Oct 2024 – Mar 2025',
   backgroundColor: 'var(--secondary-color)',
-  position: 4,
+  position: 5,
 };

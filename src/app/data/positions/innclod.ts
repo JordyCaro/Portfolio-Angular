@@ -6,7 +6,7 @@ export const Innclod: PositionInterface = {
   description: '• Developed and maintained modern web interfaces, ensuring performance, scalability, and responsive design.\n\n' +
   '• Collaborated with cross-functional teams to integrate RESTful APIs and implement data-driven features.\n\n' +
   '• Participated in code reviews, version control, and continuous improvement following agile practices.',
-  year: '2025 - 2026',
-  backgroundColor: 'var(--tertiary-color)',
-  position: 1,
+  year: 'Sep 2025 – Feb 2026',
+  backgroundColor: 'var(--secondary-color)',
+  position: 3,
 };

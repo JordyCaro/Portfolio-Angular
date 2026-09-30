@@ -1,27 +1,30 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SimpleModalService } from 'ngx-simple-modal';
+import { Subscription } from 'rxjs';
 import { projects } from '../../data/projects';
-import { ContactModalComponent } from '../../modals/contact-modal/contact-modal.component';
+import { LanguageService } from '../../i18n/language.service';
 import { OrientationEnum } from '../../models/enums/orientation.enum';
 import { formattedTechEnum } from '../../models/enums/tech.enum';
 import { ProjectInterface } from '../../models/interfaces/project.interface';
 
 
 @Component({
+  standalone: false,
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit, OnDestroy {
+
+  private langSubscription?: Subscription;
 
   constructor(
     @Inject(DOCUMENT)
     private readonly doc: Document,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly modal: SimpleModalService,
+    private readonly language: LanguageService,
   ) {
     this.projectId = this.route.snapshot.params['id'] || '';
   }
@@ -51,13 +54,21 @@ export class ProjectComponent implements OnInit {
   public ngOnInit(): void {
     const project = this.listProjects.find(i => i.id === this.projectId);
 
-    if (project)
-      this.project = project;
-    else
+    if (!project) {
       this.router.navigateByUrl('/home');
+      return;
+    }
+
+    this.langSubscription = this.language.lang$.subscribe(() => {
+      this.project = this.language.project(project);
+    });
 
     this.formatTags();
     this.formatTechs();
+  }
+
+  public ngOnDestroy(): void {
+    this.langSubscription?.unsubscribe();
   }
 
   public async openZoom(image: string): Promise<void> {
@@ -70,7 +81,7 @@ export class ProjectComponent implements OnInit {
   }
 
   public openContactModal(): void {
-    this.modal.addModal(ContactModalComponent);
+    void this.router.navigate([], { queryParams: { modal: 'contact' } });
   }
 
 
@@ -84,8 +95,8 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  @HostListener('window:scroll', ['$event'])
-  private onScroll(): void {
+  @HostListener('window:scroll')
+  onScroll(): void {
     this.toggleOnTop();
   }
 

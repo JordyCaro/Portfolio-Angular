@@ -3,6 +3,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { I18nModule } from '../../i18n/i18n.module';
 import { ContactModalComponent } from './contact-modal.component';
 
 //#endregion
@@ -11,6 +12,7 @@ import { ContactModalComponent } from './contact-modal.component';
   imports: [
     CommonModule,
     NgxEchartsModule,
+    I18nModule,
   ],
   declarations: [
     ContactModalComponent,

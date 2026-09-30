@@ -8,7 +8,7 @@ export const MetNetLead: PositionInterface = {
   '• Translated business needs into actionable tasks and delivered features on time.\n\n' +
   '• Facilitated communication, managed progress updates, and ensured project milestones were met.\n\n' +
   '• Provided technical mentorship, reviewed code, and promoted best practices to maintain high-quality standards across the team.',
-  year: '2025 - currently',
-  backgroundColor: 'var(--secondary-color)',
+  year: 'Mar 2025 – Sep 2026',
+  backgroundColor: 'var(--tertiary-color)',
   position: 2,
 };

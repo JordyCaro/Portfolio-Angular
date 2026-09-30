@@ -7,10 +7,12 @@ import { CreativeInnovation } from './positions/creativeInnovation';
 import { Good } from './positions/good';
 import { MetNetLead } from './positions/metnetLead';
 import { Innclod } from './positions/innclod';
+import { Nemco } from './positions/nemco';
 
 export const positions: PositionInterface[] = [
-  Innclod,
+  Nemco,
   MetNetLead,
+  Innclod,
   Good,
   CreativeInnovation,
   Belcorp,

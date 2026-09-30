@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'app/themes/modal';
+@use 'app/themes/modal' as *;
 
 * {
   font-family: monospace;
@@ -21,6 +21,10 @@
 
 body {
   background-color: #000b10;
+}
+
+[id] {
+  scroll-margin-top: 7rem;
 }
 
 // :root {

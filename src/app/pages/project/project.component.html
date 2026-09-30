@@ -1,4 +1,4 @@
-<button (click)="topFunction()" id="toTopBtn" class="toTopButton">
+<button (click)="topFunction()" id="toTopBtn" class="toTopButton" [attr.aria-label]="'common.toTop' | t">
   <img src="assets/imgs/arrow-up.svg" alt="top">
 </button>
 
@@ -12,24 +12,24 @@
   </div>
 
   <div class="text">
-    <h2>Outcome</h2>
+    <h2>{{ 'project.outcome' | t }}</h2>
     <p>{{ project.outcome }}</p>
 
     <div class="text--container">
       <div>
-        <h2>Development date</h2>
+        <h2>{{ 'project.date' | t }}</h2>
         <p>{{ project.developmentDate }}</p>
       </div>
       <div>
-        <h2>Tags</h2>
+        <h2>{{ 'project.tags' | t }}</h2>
         <p>{{ tags }}</p>
       </div>
       <div class="block">
-        <h2>Main Techs</h2>
+        <h2>{{ 'project.techs' | t }}</h2>
         <p>{{ techs }}</p>
       </div>
       <div>
-        <h2>Links</h2>
+        <h2>{{ 'project.links' | t }}</h2>
         <p>
           <ng-container *ngFor="let link of project.links; let i = index">
             <ng-container *ngIf="i !== 0"> |</ng-container>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="images">
-    <h2>Images</h2>
+    <h2>{{ 'project.images' | t }}</h2>
     <div class="container">
       <ng-container *ngFor="let image of project.imageUrls">
         <img (click)="openZoom(image)" [src]="image" alt="Image">
@@ -50,6 +50,6 @@
   </div>
 
   <div class="contact-me" (click)="openContactModal()">
-    <p>Let's talk - Wanna get in touch or talk about a project? Feel free to <strong>contact me</strong>.</p>
+    <p [innerHTML]="'project.cta' | t"></p>
   </div>
 </div>
